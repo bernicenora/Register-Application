@@ -1,0 +1,11 @@
+*{
+    font-family:"Lato", "sans-serif";
+}
+
+.container{
+    background:cyan;
+    min-height:500px;
+    margin:0 auto;
+    padding:1em;
+    width:900px;
+}
