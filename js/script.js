@@ -23,9 +23,10 @@ for(i=0;i<phoneNumberArray.length;i++){
 var regexzip = document.getElementById("regexzip");
 var displayzip = document.getElementsByClassName("displayzip");
 var displayZipCodeArray = document.getElementById("displayZipCodeArray");
-var zipCodeArray=["85282","85222","85233-6001","9601","93030-4005","4444-5555"];
+var zipCodeArray=["85282","85222-","85233-6001","9601","93030-4005","4444-5555"];
 displayZipCodeArray.firstChild.nodeValue = zipCodeArray;
-var zipPattern=/^(\d{5}-)|(\d{5})(|\d{4})$/;
+var zipPattern=/^(\d{5})$|^(\d{5}-\d{4})$/;
+//var zipPattern=/^\d{5}(-\d{4})?/;
 
 regexzip.firstChild.nodeValue = zipPattern;
 for(i=0;i<zipCodeArray.length;i++){
@@ -35,5 +36,25 @@ for(i=0;i<zipCodeArray.length;i++){
     }else{
         console.log(zipCodeArray[i]+" does not exist in the array");
         displayzip[i].firstChild.nodeValue = zipCodeArray[i]+" does not exist in the array";
+    }
+}
+
+//Validating a date
+var regexdate = document.getElementById("regexdate");
+var displaydate = document.getElementsByClassName("displaydate");
+var displayDateArray = document.getElementById("displayDateArray");
+var dateArray=["5/2/2019","05/02/2019","5-2-2019","9601","93030-4005","4444-5555"];
+displayDateArray.firstChild.nodeValue = dateArray;
+var datePattern=/^(\d{5})$|^(\d{5}-\d{4})$/;
+
+
+regexdate.firstChild.nodeValue = datePattern;
+for(i=0;i<dateArray.length;i++){
+    if (datePattern.test(dateArray[i]) == true){
+        console.log(dateArray[i]+" exists in the array");
+        displaydate[i].firstChild.nodeValue = dateArray[i]+" exists in the array";
+    }else{
+        console.log(dateArray[i]+" does not exist in the array");
+        displaydate[i].firstChild.nodeValue = dateArray[i]+" does not exist in the array";
     }
 }
