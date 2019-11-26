@@ -43,9 +43,9 @@ for(i=0;i<zipCodeArray.length;i++){
 var regexdate = document.getElementById("regexdate");
 var displaydate = document.getElementsByClassName("displaydate");
 var displayDateArray = document.getElementById("displayDateArray");
-var dateArray=["5/2/2019","05/02/2019","5-2-2019","9601","93030-4005","4444-5555"];
+var dateArray=["5/2/2019","05/02/2019","5-2-2019","5/5/19","05022019","06/07/2008"];
 displayDateArray.firstChild.nodeValue = dateArray;
-var datePattern=/^(\d{5})$|^(\d{5}-\d{4})$/;
+var datePattern=/^(0[1-9]|1[0-2])\/(0[1-9]|1[0-9]|2[0-9]|3[0-1])\/\d{4}$/;
 
 
 regexdate.firstChild.nodeValue = datePattern;
