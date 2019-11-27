@@ -20,7 +20,7 @@ var RegisterForm = function(){
     this.fields["exp_date"]={};
 
     //Starting field messages
-    this.fields["email"].message = "Must be a vlid e-mail address";
+    this.fields["email"].message = "Must be a valid e-mail address";
     this.fields["password"].message = "Must be atleast 6 characters";
     this.fields["state"].message="Use 2 letter abbreviation";
     this.fields["zip"].message = "Use 5 or 9 digit ZIP code";
@@ -40,6 +40,7 @@ var RegisterForm = function(){
     this.fields["address"].required="Address is required";
     this.fields["city"].required="City is required";
     this.fields["state"].required="State is required";
+    this.fields["state"].isState="State is not valid";
     this.fields["zip"].required="Zip Code is required";
     this.fields["zip"].isZip="Zip Code is not valid";
     this.fields["phone"].required = "Phone Number is required";
@@ -96,11 +97,11 @@ RegisterForm.prototype.isState = function (text){
 }
 
 RegisterForm.prototype.isZip = function(text){
-    return /^d{5}(-\d{4})?$/.test(text);
+    return /^\d{5}(-\d{4})?$/.test(text);
 }
 
 RegisterForm.prototype.isPhone = function(text){
-    return /^d{3}-\d{3}-\d{4}$/.test(text);
+    return /^\d{3}-\d{3}-\d{4}$/.test(text);
 }
 
 //Checks credit card number
@@ -122,8 +123,8 @@ RegisterForm.prototype.hasExpired = function(text){
     var month = parseInt(dateParts[0]);
     var year = parseInt(dateParts[1]);
     var now = new Date();
-    var exp = new Date(year, month)
-    return (now>exp);
+    var exp = new Date(year, month);
+    return (now<exp);
 }
 
 RegisterForm.prototype.validateField = function (fieldName, text){
